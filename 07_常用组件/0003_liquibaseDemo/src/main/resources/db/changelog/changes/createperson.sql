@@ -1,0 +1,1 @@
+create table person("id" int4 primary key ,"name" varchar(20) );
