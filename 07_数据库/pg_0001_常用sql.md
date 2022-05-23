@@ -8,5 +8,14 @@
 
   
 
+* **查询连接数 & 关闭连接方法**
+
+  ~~~ sql
+  -- 查询连接
+  select * from pg_stat_activity;
+  
+  -- 关闭连接
+  ~~~
+
   
 
