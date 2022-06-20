@@ -23,4 +23,5 @@
 hs_err_pid*
 .ipynb_checkpoints
 *vx.json
+**/vx.json
 vx_notebook
