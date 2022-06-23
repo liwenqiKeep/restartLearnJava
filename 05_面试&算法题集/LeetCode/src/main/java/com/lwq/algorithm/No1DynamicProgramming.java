@@ -5,7 +5,7 @@ package com.lwq.algorithm;
  * @author liwenqi
  * 动态规划示例
  */
-public class _0001_DynamicProgramming {
+public class No1DynamicProgramming {
     public static void main(String[] args) {
 
         // 示例1 斐波拉契数列
