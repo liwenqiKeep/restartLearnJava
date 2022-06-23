@@ -51,22 +51,25 @@ public class _44_通配符匹配 {
      */
 
 
-    boolean isMatch(String s,String p){
-        if(("*".equals(p)||"?".equals(p)) && (s !=null ) && !"".equals(s)){
-            return true;
+    public boolean isMatch(String s, String p) {
+        int m = s.length(), n = p.length();
+        boolean[][] f = new boolean[m + 1][n + 1];
+
+        f[0][0] = true;
+        for(int i = 1; i <= n; i++){
+            f[0][i] = f[0][i - 1] && p.charAt(i - 1) == '*';
         }
-        if(p == null || "".equals(p)){
-            return false;
-        }
-        char[] ss = s.toCharArray();
-        char[] pp = p.toCharArray();
-        for (int i = 0; i < ss.length; i++) {
-            for (int j = 0; j < pp.length; j++) {
-                if(ss[i] != pp[j]){
-                    continue;
+
+        for(int i = 1; i <= m; i++){
+            for(int j = 1; j <= n; j++){
+                if(s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?'){
+                    f[i][j] = f[i - 1][j - 1];
+                }
+                if(p.charAt(j - 1) == '*'){
+                    f[i][j] = f[i][j - 1] || f[i - 1][j];
                 }
             }
         }
-        return false;
+        return f[m][n];
     }
 }

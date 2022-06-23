@@ -1,4 +1,4 @@
-package com.lwq.designPattern;
+package com.lwq.designPattern.structure;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
