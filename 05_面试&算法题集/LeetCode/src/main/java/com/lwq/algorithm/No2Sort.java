@@ -10,6 +10,12 @@ public class No2Sort {
         int[] arr = {1, 3, 2, 4, 5, 4, 4, 6, 4, 3};
 
         System.out.println(Arrays.toString(insertSorting(arr)));
+
+        System.out.println(Arrays.toString(selSort(arr)));
+
+        System.out.println(Arrays.toString(bubbleSort(arr)));
+
+
     }
 
     /**
@@ -23,13 +29,34 @@ public class No2Sort {
                 //如果比tmp大把值往后移动一位
                 if (arr[j] > tmp) {
                     arr[j + 1] = arr[j];
-                    System.out.println(Arrays.toString(arr));
                 } else {
                     break;
                 }
             }
             arr[j + 1] = tmp;
 
+        }
+        return arr;
+    }
+
+    public static int[] selSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    swap(arr, i, j);
+                }
+            }
+        }
+        return arr;
+    }
+
+    public static int[] bubbleSort(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
         }
         return arr;
     }
