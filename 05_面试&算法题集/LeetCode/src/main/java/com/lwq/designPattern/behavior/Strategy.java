@@ -1,4 +1,4 @@
-package com.lwq.designPattern;
+package com.lwq.designPattern.behavior;
 
 /**
  * 策略模式
