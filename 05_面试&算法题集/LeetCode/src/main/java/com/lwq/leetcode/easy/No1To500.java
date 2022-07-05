@@ -12,8 +12,153 @@ import java.util.Stack;
 public class No1To500 {
     public static void main(String[] args) {
         No1To500 te = new No1To500();
-        int[] arr = {9,9};
-        System.out.println(Arrays.toString(te.plusOne(arr)));
+//        int[] arr = {9,9};
+//        System.out.println(Arrays.toString(te.plusOne(arr)));
+        ListNode ln = new ListNode(1,new ListNode(1,new ListNode(1,new ListNode(2,null))));
+        System.out.println(te.deleteDuplicates(ln));
+    }
+    /**
+     * 83. 删除排序链表中的重复元素
+     * 给定一个已排序的链表的头 head ， 删除所有重复的元素，使每个元素只出现一次 。返回 已排序的链表 。
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode next = head;
+        while (next!= null){
+            if(next.next != null && next.val == next.next.val){
+                removeNext(next);
+            }
+            next = next.next;
+        }
+        return head;
+    }
+
+    public void removeNext(ListNode a) {
+        a.next = a.next.next;
+
+    }
+
+    /**
+     * 70. 爬楼梯
+     * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+     *
+     * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+     *
+     *
+     *
+     * 示例 1：
+     *
+     * 输入：n = 2
+     * 输出：2
+     * 解释：有两种方法可以爬到楼顶。
+     * 1. 1 阶 + 1 阶
+     * 2. 2 阶
+     * 示例 2：
+     *
+     * 输入：n = 3
+     * 输出：3
+     * 解释：有三种方法可以爬到楼顶。
+     * 1. 1 阶 + 1 阶 + 1 阶
+     * 2. 1 阶 + 2 阶
+     * 3. 2 阶 + 1 阶
+     */
+
+    public int climbStairs(int n) {
+        if(n ==0){
+            return 0;
+        }
+        if(n == 1){
+            return 1;
+
+        }
+        if(n == 2){
+            return 2;
+
+        }
+        return (n*(n-1))>>1;
+
+    }
+    /**
+     * 69. x 的平方根
+     * 给你一个非负整数 x ，计算并返回 x 的 算术平方根 。
+     *
+     * 由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。
+     *
+     * 注意：不允许使用任何内置指数函数和算符，例如 pow(x, 0.5) 或者 x ** 0.5 。
+     *
+     *
+     *
+     * 示例 1：
+     *
+     * 输入：x = 4
+     * 输出：2
+     * 示例 2：
+     *
+     * 输入：x = 8
+     * 输出：2
+     * 解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。
+     */
+
+    public int mySqrt(int x) {
+        int s = 0;
+        while (true){
+            if(s * s == x || (s*s <x &&( (s+1) * (s+1) )> x)  ){
+                return s;
+            }
+            s++;
+        }
+    }
+    /**
+     * 67. 二进制求和
+     * 给你两个二进制字符串，返回它们的和（用二进制表示）。
+     *
+     * 输入为 非空 字符串且只包含数字 1 和 0。
+     *
+     *
+     *
+     * 示例 1:
+     *
+     * 输入: a = "11", b = "1"
+     * 输出: "100"
+     * 示例 2:
+     *
+     * 输入: a = "1010", b = "1011"
+     * 输出: "10101"
+     */
+    public String addBinary(String a, String b) {
+        // 存在超出integer.max的场景
+        int ai = 0;
+        char[] aChars = a.toCharArray();
+        for (int i = aChars.length -1; i >=0; i--) {
+            ai += Integer.parseInt(aChars[i]+"") *(int)Math.pow(2,aChars.length-i-1);
+        }
+
+        int bi = 0;
+        char[] bChars = b.toCharArray();
+        for (int i = bChars.length -1; i >=0; i--) {
+            bi += Integer.parseInt(bChars[i]+"")*  (int)Math.pow(2,bChars.length-i-1);
+        }
+
+        return Integer.toBinaryString(bi + ai);
+
+    }
+
+    public String addBinary2(String a, String b){
+        StringBuilder ans = new StringBuilder();
+
+        int n = Math.max(a.length(), b.length()), carry = 0;
+        for (int i = 0; i < n; ++i) {
+            carry += i < a.length() ? (a.charAt(a.length() - 1 - i) - '0') : 0;
+            carry += i < b.length() ? (b.charAt(b.length() - 1 - i) - '0') : 0;
+            ans.append((char) (carry % 2 + '0'));
+            carry /= 2;
+        }
+
+        if (carry > 0) {
+            ans.append('1');
+        }
+        ans.reverse();
+
+        return ans.toString();
     }
 
     /**
