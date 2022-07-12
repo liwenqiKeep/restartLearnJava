@@ -14,27 +14,41 @@ public class No1To500 {
         No1To500 te = new No1To500();
 //        int[] arr = {9,9};
 //        System.out.println(Arrays.toString(te.plusOne(arr)));
-        ListNode ln = new ListNode(1,new ListNode(1,new ListNode(1,new ListNode(2,null))));
+        ListNode ln = new ListNode(1,new ListNode(1,new ListNode(2,new ListNode(2,null))));
         System.out.println(te.deleteDuplicates(ln));
     }
+    /**
+     * 88. 合并两个有序数组
+     * 给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
+     *
+     * 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
+     *
+     * 注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素，后 n 个元素为 0 ，应忽略。nums2 的长度为 n 。
+     */
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+    }
+
     /**
      * 83. 删除排序链表中的重复元素
      * 给定一个已排序的链表的头 head ， 删除所有重复的元素，使每个元素只出现一次 。返回 已排序的链表 。
      */
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode next = head;
-        while (next!= null){
-            if(next.next != null && next.val == next.next.val){
-                removeNext(next);
+        if(head == null || head.next == null ){
+            return head;
+        }
+        ListNode  cur = head;
+        ListNode o = head.next;
+        while ( o != null){
+            if(cur.val == o.val){
+                cur.next = o.next;
+            }else {
+                cur = cur.next;
             }
-            next = next.next;
+            o = o.next;
+
         }
         return head;
-    }
-
-    public void removeNext(ListNode a) {
-        a.next = a.next.next;
-
     }
 
     /**

@@ -12,26 +12,26 @@ import java.io.File;
 public class functionTest {
 
     public static void main(String[] args) {
-        File file = new File("D:\\desk\\tiffs");
+        File file = new File("D:\\desk\\农业app\\tiff_all");
         if(!file.exists()){
             return;
         }
         for (int i = 0; i < file.listFiles().length; i++) {
             File listFile = file.listFiles()[i];
             String fileName = getPinyin(listFile.getName().substring(0,listFile.getName().lastIndexOf(".")));
-//            String ss = "INSERT INTO \"public\".\"dgis_layers\" (\"layer_uid\", \"layer_name\", \"layer_type\", \"layer_default_style\", \"layer_extent\", \"layer_wfs\", \"layer_wms\", \"maxfeature\", \"layer_modelid\", \"timecreated\", \"timemodified\", \"layer_datasource\", \"layer_datasource_uniqueid\", \"external_data_table_name\", \"layer_geom_field_name\", \"layer_cache\", \"layer_cache_time\") " +
-//                    "VALUES " +
-//                    "('9a6b4e0dbca44b01a0287134d4417"+(i+1)+"', '"+fileName+"', 'RASTER', 'e7d2e008689846a38a9afa578e2534f3', NULL, 't', 't', 100, NULL, NULL, NULL, 801, 435, '', 'geom', 'f', 0);";
-//
-//            System.out.println(ss);
+            String ss = "INSERT INTO \"public\".\"dgis_layers\" (\"layer_uid\", \"layer_name\", \"layer_type\", \"layer_default_style\", \"layer_extent\", \"layer_wfs\", \"layer_wms\", \"maxfeature\", \"layer_modelid\", \"timecreated\", \"timemodified\", \"layer_datasource\", \"layer_datasource_uniqueid\", \"external_data_table_name\", \"layer_geom_field_name\", \"layer_cache\", \"layer_cache_time\") " +
+                    "VALUES " +
+                    "('9a6b4e0dbca44b01a0287134d4417"+(i+1)+"', '"+fileName+"', 'RASTER', 'e7d2e008689846a38a9afa578e2534f3', '"+listFile.getName().substring(0,listFile.getName().lastIndexOf("."))+"', 't', 't', 100, NULL, NULL, NULL, 801, 435, '', 'geom', 'f', 0);";
+
+            System.out.println(ss);
 
 //            System.out.println("INSERT INTO dgis_workspace_layer" +
 //                    " " +
 //                    "'2e82c274f15f49519c97d2c46028382b','9a6b4e0dbca44b01a0287134d4417"+(i+1)+"';");
-
-            System.out.println("update dgis_layers set layer_extent = '"+
-                    listFile.getName().substring(0,listFile.getName().lastIndexOf("."))
-                    +"' where layer_name = '"+fileName+"';");
+//
+//            System.out.println("update dgis_layers set layer_extent = '"+
+//                    listFile.getName().substring(0,listFile.getName().lastIndexOf("."))
+//                    +"' where layer_name = '"+fileName+"';");
 
 
         }
